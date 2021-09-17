@@ -25,7 +25,7 @@ show the allocated swap disk or disks
 swapon -s 
 ```
 
-# List in descendant order the files consuming space in Gigabytes
+List in descendant order the files consuming space in Gigabytes
 ```bash
 sudo du -ch -d2 . | sort -r | grep 'G'
 ```
