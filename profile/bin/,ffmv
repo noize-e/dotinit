@@ -1,0 +1,25 @@
+#!/bin/bash
+
+find -name "*.${1:?extension}" | while read line
+  do
+    l=$(echo "${line// /-}") ;
+    l=$(echo "${l##*/}") ;
+    p=${2:?path}/${l} ;
+
+    echo "File: ${line}" ;
+    echo "Copy Path: ${p}" ;
+
+    if [[ ! -d ${2}/ ]];
+      then
+        mkdir -p ${2} ;
+    fi
+
+    cp -f "${line}" $p ;
+done ;
+
+if [[ $# -eq 0 ]];
+  then
+    echo "Find all files with (x) extension from the cwd. Then copy the file to a (x) dir." ;
+    echo "Usage: ,ffmv [file-extension] [copy-dest-dir]" ;
+    exit 1
+fi

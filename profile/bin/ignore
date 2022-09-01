@@ -1,0 +1,36 @@
+#!/bin/bash
+
+set -o errexit
+
+rules=('.DS_Store' 'node_modules ' '.jekyll-cache' '.sass-cache' '.venv' 'venv' 'env' '.env')
+
+help(){
+printf """\
+Git ignore boilerplate file manager.\n
+Usage: ignore -(option [filename])\n
+Options:
+  -n:   Create new .gitignore file
+  -a:   Adds a new rule(filename)
+  -p:   Print rules
+  -h:   Show help
+"""
+}
+
+
+if [[ $# -eq 0 ]]; then
+  help
+fi
+
+case "${1}" in
+  -n )
+    touch ./.gitignore ;
+
+    for rule in "${rules[@]}"
+      do
+        echo "${rule}" >> ./.gitignore
+    done
+    ;;
+  -h ) help ;;
+  -p ) cat ./.gitignore ;;
+  -a) echo -e "\n${2}" >> ./.gitignore ;;
+esac

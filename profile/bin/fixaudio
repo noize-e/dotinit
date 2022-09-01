@@ -1,0 +1,6 @@
+#!/bin/bash
+killall pulseaudio ; pulseaudio -k  ; rm -rf ~/.config/pulse/* && \
+sudo modprobe -r snd_hda_intel  # unload snd_hda_intel kernel module && \
+sudo modprobe snd_hda_intel     # reload snd_hda_intel kernel module && \
+alsamixer #don't forget to set the volume
+pulseaudio -D # -D to daemonize the process ;

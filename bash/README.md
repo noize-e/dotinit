@@ -1,4 +1,6 @@
-# Commands Glosary
+# Bash
+
+## CLI Cheatsheet
 
 list information about all running processes.
 ```bash
