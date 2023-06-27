@@ -1,3 +1,1 @@
-# init.code
-
-Bootstrap code files
+# .init
